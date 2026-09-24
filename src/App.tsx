@@ -1,12 +1,13 @@
 import './App.css'
-import GetPokemons from './pokemons/getPokemons.tsx'
+import Test from './components/test'
+
 
 function App() {
 
 
   return (
     <>
-    <GetPokemons />
+    <Test/>
     </>
   )
 }
