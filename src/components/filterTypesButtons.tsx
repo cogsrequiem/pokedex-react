@@ -1,15 +1,16 @@
-import usePokemonTypes from "../hooks/usePokemonTypes"
+import '../App.css'
 
-export default function FilterTypesButtons() {
+export default function FilterTypesButtons({pokemonTypes, handleClick}) {
 
-        const pokemonTypes = usePokemonTypes()
+        
     
 
     return (<>
 
             <section>
+                <button className="pokemon-type All button-type">All</button>
                 {pokemonTypes.map( type => 
-                  <button key={type.english}>{type.english}</button>  
+                  <button onClick={(e) =>handleClick(e)} className={`pokemon-type ${type.english} button-type`} value={type.english} key={type.english} >{type.english}</button>  
                 )}
             </section>
 

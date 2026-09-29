@@ -11,11 +11,7 @@ function usePokemons() {
             setPokemons(data))
     }, [])
 
-    console.log(pokemons)
-
     return pokemons
-
-
 }
 
 export default usePokemons

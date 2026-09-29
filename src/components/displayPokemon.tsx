@@ -1,21 +1,14 @@
-// import getPokemons from "../services/pokemons/getPokemons"
-
-import usePokemons from "../hooks/usePokemons"
+import '../App.css'
 
 
+export default function DisplayPokemon(props) {
 
-export default function DisplayPokemon() {
 
-
-        const pokemons = usePokemons()
-
-        console.log(pokemons)
+        
     return ( <>
-
-
-     {pokemons.map(pokemon => 
-     <div >
-        <img src={`https://pokemon-api-xidv.onrender.com/${pokemon.imgSrc}`} alt={pokemon.name.english} />
+     {props.pokemons.map(pokemon => 
+     <div key={pokemon.id} className='pokemon-card'>
+        <img src={`https://pokemon-api-xidv.onrender.com/${pokemon.imgSrc}`} className="img-pokemon" alt={pokemon.name.english} />
 
         <div>
             <p> {pokemon.id}</p>
