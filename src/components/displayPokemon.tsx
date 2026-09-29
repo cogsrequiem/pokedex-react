@@ -1,7 +1,10 @@
 import '../App.css'
+import type DisplayPokemonProps from '../types/display-pokemon'
 
 
-export default function DisplayPokemon(props) {
+
+
+export default function DisplayPokemon(props: DisplayPokemonProps) {
 
 
         
@@ -12,7 +15,7 @@ export default function DisplayPokemon(props) {
 
         <div>
             <p> {pokemon.id}</p>
-            <h1 key={pokemon}>{pokemon.name.english}</h1>
+            <h1>{pokemon.name.english}</h1>
         </div>
         
         <div>

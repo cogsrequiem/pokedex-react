@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import getPokemonsTypes from "../services/pokemonTypes/getPokemonTypes";
+import type IPokemonTypes from "../types/pokemon-types";
 
 
-function usePokemonTypes() {
+function usePokemonTypes():IPokemonTypes[] {
 
-    const [types, setTypes] = useState([])
+    const [types, setTypes] = useState<IPokemonTypes[]>([])
 
     
     useEffect(() => {
         getPokemonsTypes().then((data) => setTypes(data))
     }, [])
+
 
     return types
 

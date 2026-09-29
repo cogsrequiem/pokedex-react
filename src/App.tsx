@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import DisplayPokemon from './components/displayPokemon'
 import FilterTypesButtons from './components/filterTypesButtons'
@@ -9,32 +9,22 @@ import usePokemonTypes from './hooks/usePokemonTypes'
 
 
 
+
 function App() {
-  const pokemons = usePokemons();
-  const pokemonTypes = usePokemonTypes()
-
-  const [filtered, setFiltered] = useState(pokemons)
-
-
-
-
-  useEffect(() => {
-    setFiltered(pokemons)
-  }, [pokemons])
-
-  function handleClickType(e) {
-
-    const filterType = e.target.value
-    console.log(filterType)
-
-     setFiltered(() => pokemons.filter((pokemon) => 
-    pokemon.type.includes(filterType)))
-
-    
-  }
+  const pokemons= usePokemons();
+  const pokemonTypes= usePokemonTypes()
+  const [activeType, setActiveType] = useState('All')
  
 
-  console.log(filtered)
+  const filtered = activeType === "All"
+  ? pokemons
+  :pokemons.filter((pokemon) => pokemon.type.includes(activeType))
+
+
+  function handleClickType(e: React.MouseEvent<HTMLButtonElement>) {
+    setActiveType(e.currentTarget.value)
+  }
+
   return (
     <>
     <header>
