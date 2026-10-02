@@ -1,13 +1,19 @@
-export default function SortingButtons() {
+import type SortButtons from "../types/sort-buttons";
+import AscSortingButton from "./ascSortingButton";
+import { DescSortingButton } from "./descSortingButton";
+import NumberSortingButton from "./numberSortingButton";
+import { ResetSortingButton } from "./resetStortingButton";
+
+export default function SortingButtons({handleClick}: SortButtons) {
 
 
     return (<>
                 <section className="section-tri">
                     <p className="p-sort">Trier par:</p>
-                    <button className="AZ-sort button-sort">A-Z</button>
-                    <button className="ZA-sort button-sort">Z-A</button>
-                    <button className="desc-asc-sort button-sort">Numéro</button>
-                    <button className="reset-sort button-sort-reset">Reset</button>
+                    <AscSortingButton handleClick={handleClick}/>
+                    <DescSortingButton handleClick={handleClick}/>
+                    <NumberSortingButton handleClick={handleClick}/>
+                    <ResetSortingButton  handleClick={handleClick}/>
                 </section>
             
             </>)
