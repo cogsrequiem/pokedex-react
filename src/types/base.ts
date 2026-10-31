@@ -1,4 +1,4 @@
-interface Base {
+export default interface Base {
 "Attack": number
 "Defense": number,
 "HP": number,

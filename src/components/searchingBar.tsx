@@ -1,6 +1,9 @@
 
 
-export default function SearchingBar() {
+
+export default function SearchingBar({onChange, value}) {
+
+   
 
     return (<>
 
@@ -9,7 +12,9 @@ export default function SearchingBar() {
           <div className="flex-search">
             <label htmlFor="search-pokemon">Search your Pokemon</label>
             <input
-              placeholder="exemple: Herbizarre..."
+              onChange = {onChange}
+              value={value}
+              placeholder="example: Ivysaur..."
               type="search"
               name=""
               id="search-pokemon"

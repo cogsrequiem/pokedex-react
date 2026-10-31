@@ -1,7 +1,7 @@
-import type PokemonTypes from "../../types/pokemon-types"
+import type IPokemonTypes from "../../types/pokemon-types"
 
 
-async function getPokemonsTypes():Promise<PokemonTypes[]> {
+async function getPokemonsTypes():Promise<IPokemonTypes[]> {
 
 
     const res = await fetch("https://pokemon-api-xidv.onrender.com/types")

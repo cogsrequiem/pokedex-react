@@ -1,8 +1,9 @@
 import type SortButtons from "../types/sort-buttons";
+import '../App.css'
 
-export function DescSortingButton({handleClick}: SortButtons) {
+export function DescSortingButton({activeMode, handleClick}: SortButtons) {
 
     return (<>
-    <button onClick={handleClick} className="ZA-sort button-sort">Z-A</button>
+    <button onClick={handleClick} value="desc" className={`ZA-sort button-sort ${activeMode === "Z-A" ? "button-sort-toggled" : ""}`}>Z-A</button>
     </>)
 }
