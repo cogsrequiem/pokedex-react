@@ -11,15 +11,15 @@ import usePokemonTypes from './hooks/usePokemonTypes'
 
 
 function App() {
-  const pokemons= usePokemons();
+  const response= usePokemons();
   const pokemonTypes= usePokemonTypes();
   const [activeType, setActiveType] = useState('All');
   const [activeMode, setActiveMode] = useState("Reset");
   const [search, setSearch] = useState("");
 
   const filtered = activeType === "All"
-  ? (pokemons)
-  :(pokemons.filter((pokemon) => pokemon.type.includes(activeType)));
+  ? (response.pokemons)
+  :(response.pokemons.filter((pokemon) => pokemon.type.includes(activeType)));
 
   const sortedPokemons = activeMode === "Reset"
   ? (filtered)
@@ -69,7 +69,7 @@ function App() {
     </header>
     <main className="container-pokedex">
 
-         <DisplayPokemon pokemons={displayed}/>
+         <DisplayPokemon isLoading={response.isLoading} pokemons={displayed}/>
     </main>
     
     </>

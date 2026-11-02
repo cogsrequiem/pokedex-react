@@ -4,17 +4,27 @@ import type IPokemons from "../types/pokemons.ts"
 
 
 
-function usePokemons():IPokemons[] {
-    const [pokemons, setPokemons] = useState<IPokemons[]>([])
+function usePokemons():{pokemons:IPokemons[], isLoading: boolean}{
+    const [pokemons, setPokemons] = useState<IPokemons[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        
-        getPokemons().then((data) => 
-            setPokemons(data))
+
+        getPokemons()
+        .then((data) => {
+             setPokemons(data)
+        })
+        .catch((err) => {
+            console.error(err)
+        })
+        .finally(() => {
+            setIsLoading(false)
+        })
     }, [])
 
-
-    return pokemons
+      const res = {pokemons, isLoading}
+      
+    return res
 }
 
 export default usePokemons
