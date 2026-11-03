@@ -37,18 +37,12 @@
 
 main{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   padding: 1em;
 }
 
-main::after {
-  content: ""; /* Essential for the pseudo-element to render */
-  flex: auto; /* Allows it to grow and shrink */
-  flex-basis: 320px; /* Set a basis, often related to your item width */
-  flex-grow: 0; /* Prevent it from growing beyond its basis */
-}
 
 section{
   margin: 10px 10px;
@@ -88,6 +82,33 @@ label {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.section-pokemon-card, .show-more{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1em;
+}
+
+.show-more{
+  justify-content: center;
+}
+
+ .section-pokemon-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1em;
+}
+
+
+.section-pokemon-card::after {
+  content: ""; /* Essential for the pseudo-element to render */
+  flex: auto; /* Allows it to grow and shrink */
+  flex-basis: 320px; /* Set a basis, often related to your item width */
+  flex-grow: 0; /* Prevent it from growing beyond its basis */
 }
 
 .section-tri{

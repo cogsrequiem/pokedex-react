@@ -6,6 +6,7 @@ import SearchingBar from './components/searchingBar'
 import SortingButtons from './components/sortingButtons'
 import usePokemons from './hooks/usePokemons'
 import usePokemonTypes from './hooks/usePokemonTypes'
+import ShowMore from './components/showmoreButton'
 
 
 
@@ -62,14 +63,22 @@ function App() {
     <>
     <header>
       <nav className="nav-sort">
-        <FilterTypesButtons activeType={activeType} handleClick={handleClickType} pokemonTypes={pokemonTypes}/>
+        <FilterTypesButtons activeType={activeType} handleClick={handleClickType} isLoadingTypes={pokemonTypes.isLoading} isLoading={response.isLoading} pokemonTypes={pokemonTypes.types}/>
         <SearchingBar onChange={handleInputChange} value={search} />
         <SortingButtons activeMode={activeMode} handleClick={handleClickSort}/>
       </nav>
     </header>
     <main className="container-pokedex">
 
-         <DisplayPokemon isLoading={response.isLoading} pokemons={displayed}/>
+      <section className='section-pokemon-card'>
+        <DisplayPokemon isLoading={response.isLoading} isLoadingTypes={pokemonTypes.isLoading} pokemons={displayed}/>
+      </section>
+         
+
+         <section className="show-more">
+              <ShowMore/>
+         </section>
+         
     </main>
     
     </>

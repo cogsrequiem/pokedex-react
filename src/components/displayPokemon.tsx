@@ -11,28 +11,26 @@ export default function DisplayPokemon(props: DisplayPokemonProps) {
 
         
     return ( <>
-     {props.isLoading ? 
+     {props.isLoading && props.isLoadingTypes ? 
     
         
         skeletonNumber.map( skeleton =>
             <div key={skeletonNumber.indexOf(skeleton)} className="sk-stage shimmer" role="status" aria-busy="true">
-        <span className="sk-sr-only">Loading…</span>
-        <div className="sk-card" aria-hidden="true">
-          
-                <div className="sk sk-thumb"></div>
-                    <div className="sk-body">
-                        <div className="sk sk-line sk-w-50"></div>
-                        <div className="sk sk-line sk-title"></div>
-                        <div className="sk sk-line sk-w-70"></div>
-                    
-                        <div className="sk-meta">
-                            <div className="sk sk-line sk-w-50"></div>
-                        </div>
-                </div>
-            
+                <span className="sk-sr-only">Loading…</span>
+                <div className="sk-card" aria-hidden="true">
                 
-        </div>
-        </div>
+                        <div className="sk sk-thumb"></div>
+                            <div className="sk-body">
+                                <div className="sk sk-line sk-w-50"></div>
+                                <div className="sk sk-line sk-title"></div>
+                                <div className="sk sk-line sk-w-70"></div>
+                            
+                                <div className="sk-meta">
+                                    <div className="sk sk-line sk-w-50"></div>
+                                </div>
+                        </div> 
+                </div>
+            </div>
         )
 
      :

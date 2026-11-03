@@ -4,5 +4,7 @@ export default interface FilterTypesButtonsProps {
     pokemonTypes: IPokemonTypes[],
     handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void,
     activeType?: string,
-    isLoading?: boolean
+    isLoadingTypes: boolean,
+    isLoading: boolean
+    
 }
