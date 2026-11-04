@@ -7,6 +7,7 @@ import SortingButtons from './components/sortingButtons'
 import usePokemons from './hooks/usePokemons'
 import usePokemonTypes from './hooks/usePokemonTypes'
 import ShowMore from './components/showmoreButton'
+import type IPokemons from './types/pokemons'
 
 
 
@@ -17,6 +18,11 @@ function App() {
   const [activeType, setActiveType] = useState('All');
   const [activeMode, setActiveMode] = useState("Reset");
   const [search, setSearch] = useState("");
+  const [visibleCount, setVisibleCount] = useState(30);
+
+
+
+
 
   const filtered = activeType === "All"
   ? (response.pokemons)
@@ -29,6 +35,8 @@ function App() {
   const displayed = search.length ? sortedPokemons.filter((pokemon) => {
       return pokemon.name.english.toLowerCase().includes(search)}) : sortedPokemons
 
+    const visibleInternal = displayed.slice(0, visibleCount )
+    console.log(visibleInternal)
 
 
   function handleClickType(e: React.MouseEvent<HTMLButtonElement>) :void{
@@ -55,7 +63,10 @@ function App() {
     console.log("searchPokemon",search)
 
   }
-  
+   function handleVisiblePokemons() {
+
+    setVisibleCount(prevCount => prevCount + 30)
+   }
 
 
 
@@ -71,14 +82,15 @@ function App() {
     <main className="container-pokedex">
 
       <section className='section-pokemon-card'>
-        <DisplayPokemon isLoading={response.isLoading} isLoadingTypes={pokemonTypes.isLoading} pokemons={displayed}/>
+        <DisplayPokemon isLoading={response.isLoading} isLoadingTypes={pokemonTypes.isLoading} pokemons={visibleInternal}/>
       </section>
          
-
+      {
+        response.pokemons.length > visibleInternal.length &&
          <section className="show-more">
-              <ShowMore/>
+              <ShowMore handleVisiblePokemons={handleVisiblePokemons}/>
          </section>
-         
+      }
     </main>
     
     </>
