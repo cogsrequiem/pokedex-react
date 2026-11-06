@@ -1,8 +1,9 @@
+import type  SearchInput  from "../types/search-input.ts";
 
 
 
 
-export default function SearchingBar({onChange, value}) {
+export default function SearchingBar({onChange, value}: SearchInput) {
 
    
 
