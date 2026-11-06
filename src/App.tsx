@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import DisplayPokemon from './components/displayPokemon'
 import FilterTypesButtons from './components/filterTypesButtons'
@@ -12,12 +12,13 @@ import type IPokemons from './types/pokemons'
 
 
 
+
 function App() {
   const response= usePokemons();
   const pokemonTypes= usePokemonTypes();
   const [activeType, setActiveType] = useState('All');
   const [activeMode, setActiveMode] = useState("Reset");
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState<string>("");
   const [visibleCount, setVisibleCount] = useState(30);
 
 
@@ -32,7 +33,7 @@ function App() {
   ? (filtered)
   : (activeMode === "A-Z") ? AzSorting(filtered) : ZaSorting(filtered);
 
-  const displayed = search.length ? sortedPokemons.filter((pokemon) => {
+  const displayed = search.length ? sortedPokemons.filter((pokemon: IPokemons) => {
       return pokemon.name.english.toLowerCase().includes(search)}) : sortedPokemons
 
     const visibleInternal = displayed.slice(0, visibleCount )
@@ -47,15 +48,15 @@ function App() {
     setActiveMode(e.currentTarget.innerText) 
   }
 
-  function AzSorting(pokemons) {
+  function AzSorting(pokemons: IPokemons[]) {
     return pokemons.toSorted((a, b) => a.name.english.localeCompare(b.name.english));
   }
 
-  function ZaSorting(pokemons) {
+  function ZaSorting(pokemons: IPokemons[]) {
     return pokemons.toSorted((a, b) => b.name.english.localeCompare(a.name.english));
   }
 
-  const handleInputChange = (e)  => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>)  => {
     const searchPokemon = e.target.value.toLowerCase()
 
     setSearch(searchPokemon)
@@ -63,6 +64,7 @@ function App() {
     console.log("searchPokemon",search)
 
   }
+  
    function handleVisiblePokemons() {
 
     setVisibleCount(prevCount => prevCount + 30)
