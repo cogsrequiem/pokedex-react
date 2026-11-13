@@ -35,13 +35,13 @@
 
 
 
-main{
+/* main{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   padding: 1em;
-}
+} */
 
 button{
   cursor: pointer;
@@ -83,7 +83,6 @@ label {
 
 }
 
-
 .section-container{
   display: flex;
   justify-content: flex-start;
@@ -97,6 +96,11 @@ label {
     padding: 1em;
 }
 
+ .section-pokemon-card{
+    justify-content: space-between;
+    align-items: center;
+}
+
 .show-more > button{
   text-align: center;
   border-radius: 10px;
@@ -106,14 +110,9 @@ label {
 
 }
 
- .section-pokemon-card{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 1em;
+.show-more{
+  justify-content: center;
 }
-
 
 .section-pokemon-card::after {
   content: ""; /* Essential for the pseudo-element to render */
@@ -185,9 +184,10 @@ margin-bottom: 2rem;
   border: none;
 }
 
-.container-pokedex {
+/* .container-pokedex {
+  display: flex;
   gap: 1em;
-}
+} */
 
 .pokemon-card {
   display: flex;
